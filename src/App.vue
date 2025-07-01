@@ -1,1312 +1,807 @@
 <script setup lang="ts">
-// import { RouterLink, RouterView } from 'vue-router'
 import { ref } from 'vue'
+
+const currentYear = new Date().getFullYear()
+const age = currentYear - 1997 // Assuming birth year is 1997 based on your CV
 const resultMessage = ref('')
 </script>
 
 <template>
-  <!-- <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header> -->
-
-  <!--Main Wrapper-->
-  <div class="main-wrapper">
-    <!--Bg Image-->
-    <div class="bg-struct bg-img"></div>
-    <!--/Bg Image-->
-
-    <div class="mdl-js-layout mdl-layout--fixed-header">
-      <!--Top Header-->
-      <header class="mdl-layout__header">
-        <div class="mdl-layout__header-row mdl-scroll-spy-1">
-          <!-- Title -->
-          <a href="index.html"><span class="mdl-layout-title">benjamin</span></a>
-          <div class="mdl-layout-spacer"></div>
-          <ul class="nav mdl-navigation mdl-layout--large-screen-only">
-            <li><a class="mdl-navigation__link" data-scroll href="index.html#body">about</a></li>
-            <li>
-              <a class="mdl-navigation__link" data-scroll href="index.html#skills_sec">skills</a>
-            </li>
-            <li>
-              <a class="mdl-navigation__link" data-scroll href="index.html#portfolio_sec"
-                >portfolio</a
-              >
-            </li>
-            <li>
-              <a class="mdl-navigation__link" data-scroll href="index.html#experience_sec"
-                >experience</a
-              >
-            </li>
-            <li>
-              <a class="mdl-navigation__link" data-scroll href="index.html#education_sec"
-                >education</a
-              >
-            </li>
-            <li>
-              <span id="blog_drp" class="mdl-navigation__link">blog</span>
-              <ul
-                class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
-                data-mdl-for="blog_drp"
-              >
-                <li class="mdl-menu__item"><a href="blog-list.html">Blog List</a></li>
-                <li class="mdl-menu__item"><a href="image-blog-post.html">Image Blog Post</a></li>
-                <li class="mdl-menu__item">
-                  <a href="gallery-blog-post.html">Gallery Blog Post</a>
-                </li>
-                <li class="mdl-menu__item">
-                  <a href="youtube-blog-post.html">Youtube Blog Post</a>
-                </li>
-                <li class="mdl-menu__item"><a href="vimeo-blog-post.html">Vimeo Blog Post</a></li>
-                <li class="mdl-menu__item"><a href="audio-blog-post.html">Audio Blog Post</a></li>
-              </ul>
-            </li>
-            <li>
-              <a class="mdl-navigation__link" data-scroll href="index.html#references_sec"
-                >references</a
-              >
-            </li>
-            <li>
-              <a class="mdl-navigation__link" data-scroll href="index.html#contact_sec">contact</a>
-            </li>
-          </ul>
-          <!-- Right aligned menu below button -->
-          <button
-            id="demo-menu-lower-right"
-            class="mdl-button mdl-js-button mdl-button--icon ver-more-btn"
-          >
-            <i class="material-icons">more_vert</i>
-          </button>
-
-          <ul
-            class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
-            data-mdl-for="demo-menu-lower-right"
-          >
-            <li class="mdl-menu__item">
-              <a href="index.html#"><i class="zmdi zmdi-download font-red pr-10"></i>Download CV</a>
-            </li>
-            <li class="mdl-menu__item">
-              <a href="mailto:nanaboakyeyiadom18@gmail.com"
-                ><i class="zmdi zmdi-email-open font-green pr-10"></i>Contact Me</a
-              >
-            </li>
-            <li class="mdl-menu__item">
-              <a href="callto:+447796005063"
-                ><i class="zmdi zmdi-phone font-blue pr-10"></i>+44 7796 005 063</a
-              >
-            </li>
-          </ul>
-        </div>
-      </header>
-      <!--/Top Header-->
-
-      <!--Left Sidebar-->
-      <div class="mdl-layout__drawer">
-        <div class="nicescroll-bar">
-          <div class="drawer-profile-wrap">
-            <div class="candidate-img-drawer mt-25 mb-20"></div>
-            <span class="candidate-name block mb-10 text-center">benjamin otchere</span>
-            <ul class="social-icons mb-30">
-              <li>
-                <a class="facebook-link" href="index.html#">
-                  <i id="tt11" class="zmdi zmdi-facebook"></i>
-                  <div class="mdl-tooltip" data-mdl-for="tt11">facebook</div>
-                </a>
-              </li>
-              <li>
-                <a class="twitter-link" href="index.html#">
-                  <i id="tt12" class="zmdi zmdi-twitter"></i>
-                  <div class="mdl-tooltip" data-mdl-for="tt12">twitter</div>
-                </a>
-              </li>
-              <li>
-                <a class="linkedin-link" href="index.html#">
-                  <i id="tt13" class="zmdi zmdi-linkedin"></i>
-                  <div class="mdl-tooltip" data-mdl-for="tt13">linkedin</div>
-                </a>
-              </li>
-              <li>
-                <a class="github-link" href="index.html#">
-                  <i id="tt14" class="zmdi zmdi-github"></i>
-                  <div class="mdl-tooltip" data-mdl-for="tt14">github</div>
-                </a>
-              </li>
-              <li>
-                <a class="instagram-link" href="index.html#">
-                  <i id="tt15" class="zmdi zmdi-instagram"></i>
-                  <div class="mdl-tooltip" data-mdl-for="tt15">instagram</div>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="mdl-scroll-spy-2">
-            <ul class="mdl-navigation">
-              <li>
-                <a class="mdl-navigation__link border-top-sep" data-scroll href="index.html#body">
-                  <i class="zmdi zmdi-border-color pr-15"></i>
-                  <span class="font-capitalize">about</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  class="mdl-navigation__link border-top-sep"
-                  data-scroll
-                  href="index.html#skills_sec"
-                >
-                  <i class="zmdi zmdi-cutlery pr-15"></i>
-                  <span class="font-capitalize">skills</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  class="mdl-navigation__link border-top-sep"
-                  data-scroll
-                  href="index.html#portfolio_sec"
-                >
-                  <i class="zmdi zmdi-case pr-15"></i>
-                  <span class="font-capitalize">portfolio</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  class="mdl-navigation__link border-top-sep"
-                  data-scroll
-                  href="index.html#experience_sec"
-                >
-                  <i class="zmdi zmdi-shield-check pr-15"></i>
-                  <span class="font-capitalize">experience</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  class="mdl-navigation__link border-top-sep"
-                  data-scroll
-                  href="index.html#education_sec"
-                >
-                  <i class="zmdi zmdi-library pr-15"></i>
-                  <span class="font-capitalize">education</span>
-                </a>
-              </li>
-
-              <li>
-                <a
-                  class="mdl-navigation__link border-top-sep"
-                  href="javascript:void(0);"
-                  data-toggle="collapse"
-                  data-target="#blog_dr"
-                >
-                  <i class="zmdi zmdi-tag-more pr-15"></i>
-                  <span class="font-capitalize">blog</span>
-                </a>
-                <ul id="blog_dr" class="collapse collapse-level-1">
-                  <li>
-                    <a class="mdl-navigation__link border-top-sep" href="blog-list.html"
-                      >Blog List</a
-                    >
-                  </li>
-                  <li>
-                    <a class="mdl-navigation__link border-top-sep" href="image-blog-post.html"
-                      >Image Blog Post</a
-                    >
-                  </li>
-                  <li>
-                    <a class="mdl-navigation__link border-top-sep" href="gallery-blog-post.html"
-                      >Gallery Blog Post</a
-                    >
-                  </li>
-                  <li>
-                    <a class="mdl-navigation__link border-top-sep" href="youtube-blog-post.html"
-                      >Youtube Blog Post</a
-                    >
-                  </li>
-                  <li>
-                    <a class="mdl-navigation__link border-top-sep" href="vimeo-blog-post.html"
-                      >Vimeo Blog Post</a
-                    >
-                  </li>
-                  <li>
-                    <a class="mdl-navigation__link border-top-sep" href="audio-blog-post.html"
-                      >Audio Blog Post</a
-                    >
-                  </li>
-                </ul>
-              </li>
-
-              <li>
-                <a
-                  class="mdl-navigation__link border-top-sep"
-                  data-scroll
-                  href="index.html#references_sec"
-                >
-                  <i class="zmdi zmdi-bookmark pr-15"></i>
-                  <span class="font-capitalize">references</span>
-                </a>
-              </li>
-
-              <li>
-                <a
-                  class="mdl-navigation__link border-top-sep border-bottom-sep"
-                  data-scroll
-                  href="index.html#contact_sec"
-                >
-                  <i class="zmdi zmdi-email pr-15"></i>
-                  <span class="font-capitalize">contact</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="drawer-footer mt-50 mb-30 text-center">
-            <p class="font-12 mt-10">NBY &copy; {{ new Date().getFullYear() }}.</p>
-          </div>
-        </div>
-      </div>
-      <!--/Left Sidebar-->
-
-      <!--Setting-->
-      <div class="mdl-layout__drawer-right settings-drawer">
-        <div class="nicescroll-bar">
-          <span class="mdl-layout-title bg-blue font-white">
-            <span>options</span>
-          </span>
-          <div class="layout-switcher-wrap overflow-hide border-bottom-sep">
-            <ul>
-              <li>
-                <span class="layout-title">box layout</span>
-                <span class="layout-switcher">
-                  <label
-                    class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
-                    data-mdl-for="switch-1"
-                  >
-                    <input type="checkbox" id="switch-1" class="mdl-switch__input" />
-                    <span class="mdl-switch__label"></span>
-                  </label>
-                </span>
-              </li>
-              <li>
-                <span class="layout-title">dark mode</span>
-                <span class="layout-switcher">
-                  <label
-                    class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
-                    data-mdl-for="switch-2"
-                  >
-                    <input type="checkbox" id="switch-2" class="mdl-switch__input" />
-                    <span class="mdl-switch__label"></span>
-                  </label>
-                </span>
-              </li>
-              <li>
-                <span class="layout-title">header full width</span>
-                <span class="layout-switcher">
-                  <label
-                    class="mdl-switch mdl-js-switch mdl-js-ripple-effect"
-                    data-mdl-for="switch-3"
-                  >
-                    <input type="checkbox" id="switch-3" class="mdl-switch__input" />
-                    <span class="mdl-switch__label"></span>
-                  </label>
-                </span>
-              </li>
-            </ul>
-          </div>
-          <div class="hero-switcher-wrap overflow-hide">
-            <span class="hero-switcher-title">Hero background</span>
-            <div class="mb-20">
-              <span class="hero-switcher-cat-title">image bg</span>
-              <ul>
-                <li id="imbg_1"></li>
-                <li id="imbg_2"></li>
-                <li id="imbg_3"></li>
-                <li id="imbg_4"></li>
-              </ul>
-            </div>
-            <div class="mb-20">
-              <span class="hero-switcher-cat-title">pattern bg</span>
-              <ul>
-                <li id="pattrnbg_1"></li>
-                <li id="pattrnbg_2"></li>
-                <li id="pattrnbg_3"></li>
-                <li id="pattrnbg_4"></li>
-              </ul>
-            </div>
-            <div class="mb-20">
-              <span class="hero-switcher-cat-title">abstract bg</span>
-              <ul>
-                <li id="abstctbg_1"></li>
-                <li id="abstctbg_2"></li>
-                <li id="abstctbg_3"></li>
-                <li id="abstctbg_4"></li>
-              </ul>
-            </div>
-            <div class="mb-20">
-              <span class="hero-switcher-cat-title">color bg</span>
-              <ul>
-                <li id="colorbg_1"></li>
-                <li id="colorbg_2"></li>
-                <li id="colorbg_3"></li>
-                <li id="colorbg_4"></li>
-              </ul>
-            </div>
-            <div class="mt-10 mb-30">
-              <a
-                id="reset"
-                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect font-dark margin-lr-auto"
-                href="index.html#"
-                >reset</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-      <!--/Setting-->
-
-      <!--Main Content-->
-      <div class="main-content relative">
-        <div class="container">
-          <!--About Sec-->
-          <section class="about-sec mt-180 mt-sm-120 mb-30">
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="mdl-card mdl-shadow--2dp">
-                  <div class="row">
-                    <div class="col-md-5 col-xs-12 mb-30">
-                      <div class="candidate-img mb-35"></div>
-                      <ul class="social-icons">
-                        <li>
-                          <a class="facebook-link" href="index.html#">
-                            <i id="tt1" class="zmdi zmdi-facebook"></i>
-                            <div class="mdl-tooltip" data-mdl-for="tt1">facebook</div>
-                          </a>
-                        </li>
-                        <li>
-                          <a class="twitter-link" href="index.html#">
-                            <i id="tt2" class="zmdi zmdi-twitter"></i>
-                            <div class="mdl-tooltip" data-mdl-for="tt2">twitter</div>
-                          </a>
-                        </li>
-                        <li>
-                          <a class="linkedin-link" href="index.html#">
-                            <i id="tt3" class="zmdi zmdi-linkedin"></i>
-                            <div class="mdl-tooltip" data-mdl-for="tt3">linkedin</div>
-                          </a>
-                        </li>
-                        <li>
-                          <a class="dribbble-link" href="index.html#">
-                            <i id="tt4" class="zmdi zmdi-dribbble"></i>
-                            <div class="mdl-tooltip" data-mdl-for="tt4">dribbble</div>
-                          </a>
-                        </li>
-                        <li>
-                          <a class="instagram-link" href="index.html#">
-                            <i id="tt5" class="zmdi zmdi-instagram"></i>
-                            <div class="mdl-tooltip" data-mdl-for="tt5">instagram</div>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div class="col-md-7 col-xs-12">
-                      <div class="info-wrap">
-                        <h1>benjamin otchere</h1>
-                        <h5 class="mt-20 font-grey">Seasoned Software Engineer & Developer</h5>
-                        <div class="mt-30">
-                          <a
-                            id="download_cv"
-                            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect bg-green font-white mr-10"
-                            href="index.html#"
-                            >download cv</a
-                          >
-                          <a
-                            class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect bg-blue font-white"
-                            href="index.html#contact_sec"
-                            data-scroll
-                            >contact</a
-                          >
-                        </div>
-                      </div>
-                      <ul class="profile-wrap mt-50">
-                        <li>
-                          <div class="profile-title">age</div>
-                          <div class="profile-desc">{{ new Date().getFullYear() - 1997 }}</div>
-                        </li>
-                        <li>
-                          <div class="profile-title">address</div>
-                          <div class="profile-desc">39 Fairwall house, London, UK</div>
-                        </li>
-                        <li>
-                          <div class="profile-title">email</div>
-                          <div class="profile-desc">nanaboakyeyiadom18@gmail.com</div>
-                        </li>
-                        <li>
-                          <div class="profile-title">phone</div>
-                          <div class="profile-desc">+44 7796 005 063</div>
-                        </li>
-                        <li>
-                          <div class="profile-title">freelance</div>
-                          <div class="profile-desc relative">
-                            Available
-                            <i
-                              id="datepickopn"
-                              class="zmdi zmdi-calendar-check font-green pl-5"
-                            ></i>
-                            <div id="datepicker1" class="datepicker"></div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          <!--/About Sec-->
-
-          <!--Skills Sec-->
-          <section id="skills_sec" class="skills-sec sec-pad-top-sm">
-            <div class="row">
-              <div class="col-sm-6 mb-30">
-                <h2 class="mb-30">technical skills</h2>
-                <div class="mdl-card mdl-shadow--2dp">
-                  <div class="mb-30">
-                    <span class="progress-cat">Photoshop CS</span>
-                    <div class="progress-bar-graph">
-                      <div class="progress-bar-wrap">
-                        <div class="bar-wrap blue-bar">
-                          <span data-width="60"></span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mb-30">
-                    <span class="progress-cat">Illustrator CS</span>
-                    <div class="progress-bar-graph">
-                      <div class="progress-bar-wrap">
-                        <div class="bar-wrap green-bar">
-                          <span data-width="90"></span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mb-30">
-                    <span class="progress-cat">Sketch</span>
-                    <div class="progress-bar-graph">
-                      <div class="progress-bar-wrap">
-                        <div class="bar-wrap yellow-bar">
-                          <span data-width="50"></span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 mb-30">
-                <h2 class="mb-30">soft skills</h2>
-                <div class="mdl-card mdl-shadow--2dp">
-                  <div class="mb-30">
-                    <span class="progress-cat">Communication</span>
-                    <div class="progress-bar-graph">
-                      <div class="progress-bar-wrap">
-                        <div class="bar-wrap blue-bar">
-                          <span data-width="80"></span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mb-30">
-                    <span class="progress-cat">Language</span>
-                    <div class="progress-bar-graph">
-                      <div class="progress-bar-wrap">
-                        <div class="bar-wrap green-bar">
-                          <span data-width="95"></span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mb-30">
-                    <span class="progress-cat">General Knowledge</span>
-                    <div class="progress-bar-graph">
-                      <div class="progress-bar-wrap">
-                        <div class="bar-wrap yellow-bar">
-                          <span data-width="90"></span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-          <!--/Skills Sec-->
-
-          <!--Profile Sec-->
-          <section id="profile_sec" class="profile-sec sec-pad-top-sm">
-            <h2 class="mb-30">what i do</h2>
-            <div class="row">
-              <div class="col-md-3 col-sm-6 col-xs-12 mb-30">
-                <div class="mdl-card mdl-shadow--2dp">
-                  <i class="zmdi zmdi-format-color-fill font-blue profile-icon"></i>
-                  <h4 class="mb-15">user interface</h4>
-                  <p>A mobile first responsive template with material design.</p>
-                </div>
-              </div>
-              <div class="col-md-3 col-sm-6 col-xs-12 mb-30">
-                <div class="mdl-card mdl-shadow--2dp">
-                  <i class="zmdi zmdi-format-color-text font-green profile-icon"></i>
-                  <h4 class="mb-15">branding</h4>
-                  <p>Comes with light and dark options. Suitable for the universe.</p>
-                </div>
-              </div>
-              <div class="col-md-3 col-sm-6 col-xs-12 mb-30">
-                <div class="mdl-card mdl-shadow--2dp">
-                  <i class="zmdi zmdi-comments font-yellow profile-icon"></i>
-                  <h4 class="mb-15">communication</h4>
-                  <p>Extra ordinary setting pannel with lots of awesome features.</p>
-                </div>
-              </div>
-              <div class="col-md-3 col-sm-6 col-xs-12 mb-30">
-                <div class="mdl-card mdl-shadow--2dp">
-                  <i class="zmdi zmdi-grain font-red profile-icon"></i>
-                  <h4 class="mb-15">strategy</h4>
-                  <p>Easy customizable framework using bootstrap sass.</p>
-                </div>
-              </div>
-            </div>
-          </section>
-          <!--/Profile Sec-->
-
-          <!--Portfolio Sec-->
-          <section id="portfolio_sec" class="portfolio-sec sec-pad-top-sm">
-            <div class="mb-15">
-              <h2 class="pull-left float-none-xs">portfolio</h2>
-              <div class="filter-wrap pull-right float-none-xs">
-                <!-- Portfolio Filters -->
-                <ul id="filters">
-                  <li><a id="all" href="index.html#" data-filter="*" class="active">all</a></li>
-                  <li><a href="index.html#" data-filter=".branding">branding</a></li>
-                  <li><a href="index.html#" data-filter=".design">design</a></li>
-                  <li><a href="index.html#" data-filter=".photography">photo</a></li>
-                  <li><a href="index.html#" data-filter=".web">web</a></li>
-                </ul>
-                <!--/Portfolio Filters -->
-                <div class="clearfix"></div>
-              </div>
-              <div class="clearfix"></div>
-            </div>
-            <div class="gallery-wrap mb-30">
-              <div class="portfolio-wrap project-gallery">
-                <ul id="portfolio" class="portf auto-construct project-gallery" data-col="3">
-                  <li class="item mdl-card mdl-shadow--2dp pa-0 branding">
-                    <div class="light-img-wrap mdl-card__title pa-0">
-                      <img
-                        class="img-responsive"
-                        src="/src/assets/img/gallery1.jpg"
-                        alt="Image description"
-                      />
-                      <div class="light-img-overlay"></div>
-                      <span class="img-cap">good morning</span>
-                    </div>
-                    <span class="bottom-links mdl-card__actions">
-                      <a id="goto_box_1" href="index.html#"><i class="zmdi zmdi-eye"></i></a>
-                      <a href="project-detail.html"><i class="zmdi zmdi-format-subject"></i></a>
-                    </span>
-                  </li>
-                  <li class="item mdl-card mdl-shadow--2dp pa-0 photography">
-                    <div class="light-img-wrap mdl-card__title pa-0">
-                      <img
-                        class="img-responsive"
-                        src="/src/assets/img/gallery2.jpg"
-                        alt="Image description"
-                      />
-                      <div class="light-img-overlay"></div>
-                      <span class="img-cap">Grand Canyon</span>
-                    </div>
-                    <span class="bottom-links mdl-card__actions">
-                      <a id="goto_box_2" href="index.html#"><i class="zmdi zmdi-eye"></i></a>
-                      <a href="project-detail.html"><i class="zmdi zmdi-format-subject"></i></a>
-                    </span>
-                  </li>
-                  <li class="item mdl-card mdl-shadow--2dp pa-0 design">
-                    <div class="light-img-wrap mdl-card__title pa-0">
-                      <img
-                        class="img-responsive"
-                        src="/src/assets/img/gallery3.jpg"
-                        alt="Image description"
-                      />
-                      <div class="light-img-overlay"></div>
-                      <span class="img-cap">iceland</span>
-                    </div>
-                    <span class="bottom-links mdl-card__actions">
-                      <a id="goto_box_3" href="index.html#"><i class="zmdi zmdi-eye"></i></a>
-                      <a href="project-detail.html"><i class="zmdi zmdi-format-subject"></i></a>
-                    </span>
-                  </li>
-                  <li class="item mdl-card mdl-shadow--2dp pa-0 web">
-                    <div class="light-img-wrap mdl-card__title pa-0">
-                      <img
-                        class="img-responsive"
-                        src="/src/assets/img/gallery4.jpg"
-                        alt="Image description"
-                      />
-                      <div class="light-img-overlay"></div>
-                      <span class="img-cap">serenity</span>
-                    </div>
-                    <span class="bottom-links mdl-card__actions">
-                      <a id="goto_box_4" href="index.html#"><i class="zmdi zmdi-eye"></i></a>
-                      <a href="project-detail.html"><i class="zmdi zmdi-format-subject"></i></a>
-                    </span>
-                  </li>
-
-                  <li class="item mdl-card mdl-shadow--2dp pa-0 design">
-                    <div class="light-img-wrap mdl-card__title pa-0">
-                      <img
-                        class="img-responsive"
-                        src="/src/assets/img/gallery5.jpg"
-                        alt="Image description"
-                      />
-                      <div class="light-img-overlay"></div>
-                      <span class="img-cap">world seize day</span>
-                    </div>
-                    <span class="bottom-links mdl-card__actions">
-                      <a id="goto_box_5" href="index.html#"><i class="zmdi zmdi-eye"></i></a>
-                      <a href="project-detail.html"><i class="zmdi zmdi-format-subject"></i></a>
-                    </span>
-                  </li>
-                  <li class="item mdl-card mdl-shadow--2dp pa-0 branding">
-                    <div class="light-img-wrap mdl-card__title pa-0">
-                      <img
-                        class="img-responsive"
-                        src="/src/assets/img/gallery6.jpg"
-                        alt="Image description"
-                      />
-                      <div class="light-img-overlay"></div>
-                      <span class="img-cap">green bugs</span>
-                    </div>
-                    <span class="bottom-links mdl-card__actions">
-                      <a id="goto_box_6" href="index.html#"><i class="zmdi zmdi-eye"></i></a>
-                      <a href="project-detail.html"><i class="zmdi zmdi-format-subject"></i></a>
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </section>
-          <!--/Portfolio Sec-->
-
-          <!--Interest Sec-->
-          <section id="interest_sec" class="interest-sec sec-pad-top-sm">
-            <h2 class="mb-30">interests</h2>
-            <div class="row">
-              <div class="col-md-2 col-sm-4 col-xs-6 mb-30">
-                <div class="mdl-card mdl-shadow--2dp text-center pa-20 pt-30 pb-30">
-                  <i class="zmdi zmdi-radio"></i>
-                  <span>music</span>
-                </div>
-              </div>
-              <div class="col-md-2 col-sm-4 col-xs-6 mb-30">
-                <div class="mdl-card mdl-shadow--2dp text-center pa-20 pt-30 pb-30">
-                  <i class="zmdi zmdi-smartphone-ring"></i>
-                  <span>gaming</span>
-                </div>
-              </div>
-              <div class="col-md-2 col-sm-4 col-xs-6 mb-30">
-                <div class="mdl-card mdl-shadow--2dp text-center pa-20 pt-30 pb-30">
-                  <i class="zmdi zmdi-camera"></i>
-                  <span>photography</span>
-                </div>
-              </div>
-              <div class="col-md-2 col-sm-4 col-xs-6 mb-30">
-                <div class="mdl-card mdl-shadow--2dp text-center pa-20 pt-30 pb-30">
-                  <i class="zmdi zmdi-library"></i>
-                  <span>reading</span>
-                </div>
-              </div>
-              <div class="col-md-2 col-sm-4 col-xs-6 mb-30">
-                <div class="mdl-card mdl-shadow--2dp text-center pa-20 pt-30 pb-30">
-                  <i class="zmdi zmdi-airplane"></i>
-                  <span>traveling</span>
-                </div>
-              </div>
-              <div class="col-md-2 col-sm-4 col-xs-6 mb-30">
-                <div class="mdl-card mdl-shadow--2dp text-center pa-20 pt-30 pb-30">
-                  <i class="zmdi zmdi-dribbble"></i>
-                  <span>sports</span>
-                </div>
-              </div>
-            </div>
-          </section>
-          <!--/Interest Sec-->
-
-          <!--Experience Sec-->
-          <section id="experience_sec" class="experience-sec sec-pad-top-sm">
-            <h2 class="mb-30">experience</h2>
-            <div class="timeline-wrap overflow-hide mb-30">
-              <ul class="timeline">
-                <li>
-                  <div class="timeline-badge">
-                    <i class="zmdi zmdi-case font-blue"></i>
-                  </div>
-                  <div class="timeline-panel mdl-card mdl-shadow--2dp pt-30 pb-30 border-top-blue">
-                    <div class="timeline-heading">
-                      <h4 class="mb-10">UI/UX Designer</h4>
-                      <span class="duration mb-5">Mar 2014 - present</span>
-                      <span class="institution">Fakebook</span>
-                    </div>
-                    <div class="timeline-body">
-                      <p class="mt-25">
-                        Invitamus me testatur sed quod non dum animae tuae lacrimis ut libertatem
-                        deum rogus aegritudinis causet. Dicens hoc contra serpentibus isto.
-                      </p>
-                    </div>
-                  </div>
-                </li>
-
-                <li class="timeline-inverted">
-                  <div class="timeline-badge">
-                    <i class="zmdi zmdi-format-color-text font-green"></i>
-                  </div>
-                  <div class="timeline-panel mdl-card mdl-shadow--2dp pt-30 pb-30 border-top-green">
-                    <div class="timeline-heading">
-                      <h4 class="mb-10">Art Director</h4>
-                      <span class="duration mb-5">Jul 2013 — Mar 2014</span>
-                      <span class="institution">hencework</span>
-                    </div>
-                    <div class="timeline-body">
-                      <p class="mt-25">
-                        Invitamus me testatur sed quod non dum animae tuae lacrimis ut libertatem
-                        deum rogus aegritudinis causet. Dicens hoc contra serpentibus isto.
-                      </p>
-                    </div>
-                  </div>
-                </li>
-
-                <li>
-                  <div class="timeline-badge">
-                    <i class="zmdi zmdi-city-alt font-yellow"></i>
-                  </div>
-                  <div
-                    class="timeline-panel mdl-card mdl-shadow--2dp pt-30 pb-30 border-top-yellow"
-                  >
-                    <div class="timeline-heading">
-                      <h4 class="mb-10">Graphic Designer</h4>
-                      <span class="duration mb-5">Jan 2013 – Jul 2013</span>
-                      <span class="institution">Sagmeester</span>
-                    </div>
-                    <div class="timeline-body">
-                      <p class="mt-25">
-                        Invitamus me testatur sed quod non dum animae tuae lacrimis ut libertatem
-                        deum rogus aegritudinis causet. Dicens hoc contra serpentibus isto.
-                      </p>
-                    </div>
-                  </div>
-                </li>
-                <li class="clearfix no-float"></li>
-              </ul>
-            </div>
-          </section>
-          <!--/Experience Sec-->
-
-          <!--Education Sec-->
-          <section id="education_sec" class="education-sec sec-pad-top-sm">
-            <h2 class="mb-30">education</h2>
-            <div class="timeline-wrap overflow-hide mb-30">
-              <ul class="timeline">
-                <li>
-                  <div class="timeline-badge bg-blue no-icon"></div>
-                  <div class="timeline-panel mdl-card mdl-shadow--2dp pt-30 pb-30 border-top-blue">
-                    <div class="timeline-heading">
-                      <h4 class="mb-10">master of computer science</h4>
-                      <span class="duration mb-5">2014 - 2016</span>
-                      <span class="institution">stakford university</span>
-                    </div>
-                  </div>
-                </li>
-
-                <li class="timeline-inverted">
-                  <div class="timeline-badge bg-green no-icon"></div>
-                  <div class="timeline-panel mdl-card mdl-shadow--2dp pt-30 pb-30 border-top-green">
-                    <div class="timeline-heading">
-                      <h4 class="mb-10">Master Of Art</h4>
-                      <span class="duration mb-5">2012 - 2014</span>
-                      <span class="institution">Cedarglen University</span>
-                    </div>
-                  </div>
-                </li>
-
-                <li>
-                  <div class="timeline-badge bg-yellow no-icon"></div>
-                  <div
-                    class="timeline-panel mdl-card mdl-shadow--2dp pt-30 pb-30 border-top-yellow"
-                  >
-                    <div class="timeline-heading">
-                      <h4 class="mb-10">Bachelor Of Culture</h4>
-                      <span class="duration mb-5">2009 - 2012</span>
-                      <span class="institution">Crowmont Design School</span>
-                    </div>
-                  </div>
-                </li>
-                <li class="timeline-inverted">
-                  <div class="timeline-badge bg-red no-icon"></div>
-                  <div class="timeline-panel mdl-card mdl-shadow--2dp pt-30 pb-30 border-top-red">
-                    <div class="timeline-heading">
-                      <h4 class="mb-10">Graphic Design Diploma</h4>
-                      <span class="duration mb-5">2008 - 2009</span>
-                      <span class="institution">Shorepath Collegiate Institute</span>
-                    </div>
-                  </div>
-                </li>
-                <li class="clearfix no-float"></li>
-              </ul>
-            </div>
-          </section>
-          <!--/Education Sec-->
-
-          <!--Blog Sec-->
-          <section id="blog_sec" class="blog-sec sec-pad-top-sm">
-            <h2 class="mb-30">blog</h2>
-            <div class="row">
-              <div class="col-sm-4 mb-30">
-                <div class="mdl-card mdl-shadow--2dp pa-0">
-                  <div class="mdl-card__title pa-0">
-                    <div class="blog-img blog-1"></div>
-                  </div>
-                  <div class="mdl-card__supporting-text relative">
-                    <span class="blog-cat">travel</span>
-                    <a href="youtube-blog-post.html">
-                      <h4 class="mt-15 mb-20">Fly High with youtube</h4>
-                    </a>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit eleifend lacinia...
-                    </p>
-                    <a
-                      href="youtube-blog-post.html"
-                      class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect bg-red mdl-shadow--8dp"
-                    >
-                      <i class="zmdi zmdi-youtube-play"></i>
-                    </a>
-                  </div>
-                  <div class="mdl-card__actions mdl-card--border">
-                    <span class="blog-post-date inline-block">21.1.17</span>
-                    <div class="mdl-layout-spacer"></div>
-                    <button
-                      class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect mr-5"
-                    >
-                      <i class="zmdi zmdi-favorite"></i>
-                    </button>
-                    <button
-                      id="share_menu_1"
-                      class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
-                    >
-                      <i class="zmdi zmdi-share"></i>
-                    </button>
-                    <ul
-                      class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
-                      data-mdl-for="share_menu_1"
-                    >
-                      <li class="mdl-menu__item">Facebook</li>
-                      <li class="mdl-menu__item">Twitter</li>
-                      <li class="mdl-menu__item">LinkedIn</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-4 mb-30">
-                <div class="mdl-card mdl-shadow--2dp pa-0">
-                  <div class="mdl-card__title pa-0">
-                    <div class="blog-img blog-2"></div>
-                  </div>
-                  <div class="mdl-card__supporting-text relative">
-                    <span class="blog-cat">photography</span>
-                    <a href="image-blog-post.html">
-                      <h4 class="mt-15 mb-20">Iceland live in images</h4>
-                    </a>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit eleifend lacinia...
-                    </p>
-                    <a
-                      href="image-blog-post.html"
-                      class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect bg-blue mdl-shadow--8dp"
-                    >
-                      <i class="zmdi zmdi-image-o"></i>
-                    </a>
-                  </div>
-                  <div class="mdl-card__actions mdl-card--border">
-                    <span class="blog-post-date inline-block">15.1.17</span>
-                    <div class="mdl-layout-spacer"></div>
-                    <button
-                      class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect mr-5"
-                    >
-                      <i class="zmdi zmdi-favorite"></i>
-                    </button>
-                    <button
-                      id="share_menu_2"
-                      class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
-                    >
-                      <i class="zmdi zmdi-share"></i>
-                    </button>
-                    <ul
-                      class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
-                      data-mdl-for="share_menu_2"
-                    >
-                      <li class="mdl-menu__item">Facebook</li>
-                      <li class="mdl-menu__item">Twitter</li>
-                      <li class="mdl-menu__item">LinkedIn</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-4 mb-30">
-                <div class="mdl-card mdl-shadow--2dp pa-0">
-                  <div class="mdl-card__title pa-0">
-                    <div class="blog-img blog-3"></div>
-                  </div>
-                  <div class="mdl-card__supporting-text relative">
-                    <span class="blog-cat">science</span>
-                    <a href="gallery-blog-post.html">
-                      <h4 class="mt-15 mb-20">Grand canyon mysteries</h4>
-                    </a>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit eleifend lacinia...
-                    </p>
-                    <a
-                      href="gallery-blog-post.html"
-                      class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect bg-green mdl-shadow--8dp"
-                    >
-                      <i class="zmdi zmdi-collection-image-o"></i>
-                    </a>
-                  </div>
-                  <div class="mdl-card__actions mdl-card--border">
-                    <span class="blog-post-date inline-block">9.1.17</span>
-                    <div class="mdl-layout-spacer"></div>
-                    <button
-                      class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect mr-5"
-                    >
-                      <i class="zmdi zmdi-favorite"></i>
-                    </button>
-                    <button
-                      id="share_menu_3"
-                      class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect"
-                    >
-                      <i class="zmdi zmdi-share"></i>
-                    </button>
-                    <ul
-                      class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
-                      data-mdl-for="share_menu_3"
-                    >
-                      <li class="mdl-menu__item">Facebook</li>
-                      <li class="mdl-menu__item">Twitter</li>
-                      <li class="mdl-menu__item">LinkedIn</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="text-center mt-20 mb-30">
-              <a
-                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect margin-lr-auto view-more"
-                href="blog-list.html"
-                >view all</a
-              >
-            </div>
-          </section>
-          <!--/Blog Sec-->
-
-          <!--References Sec-->
-          <section id="references_sec" class="reference-sec sec-pad-top-sm">
-            <h2 class="mb-30">testimonial</h2>
-            <div class="row">
-              <div class="col-sm-12 mb-30">
-                <div class="mdl-card mdl-shadow--2dp border-top-yellow pa-35">
-                  <div class="testimonial-carousel">
-                    <div>
-                      <blockquote>
-                        "Invitamus me testatur sed quod non dum animae tuae lacrimis ut libertatem
-                        deum rogus aegritudinis causet. Dicens hoc contra serpentibus isto."
-                      </blockquote>
-                      <span class="ref-name block mb-5 mt-20">john doe</span>
-                      <span class="ref-desgn block">Lead Designer in Droffox</span>
-                    </div>
-                    <div>
-                      <blockquote>
-                        "Invitamus me testatur sed quod non dum animae tuae lacrimis ut libertatem
-                        deum rogus aegritudinis causet. Dicens hoc contra serpentibus isto."
-                      </blockquote>
-                      <span class="ref-name block mb-5 mt-20">Shone doe</span>
-                      <span class="ref-desgn block">Lead Designer in Fakebook</span>
-                    </div>
-                  </div>
-                  <div class="clearfix"></div>
-                </div>
-              </div>
-            </div>
-          </section>
-          <!--/References Sec-->
-
-          <!--Client Sec-->
-          <section id="client_sec" class="client-sec sec-pad-top-sm">
-            <div class="row">
-              <div class="col-sm-12 mb-30">
-                <div class="client-carousel">
-                  <img src="/src/assets/img/client1.png" alt="client" />
-                  <img src="/src/assets/img/client2.png" alt="client" />
-                  <img src="/src/assets/img/client3.png" alt="client" />
-                  <img src="/src/assets/img/client4.png" alt="client" />
-                  <img src="/src/assets/img/client5.png" alt="client" />
-                  <img src="/src/assets/img/client6.png" alt="client" />
-                </div>
-              </div>
-            </div>
-          </section>
-          <!--/Client Sec-->
-
-          <!--Price Sec-->
-          <section id="price_sec" class="price-sec sec-pad-top-sm">
-            <h2 class="mb-30">pricing</h2>
-            <div class="row">
-              <!-- item -->
-              <div class="col-sm-4 text-center mb-30">
-                <div class="mdl-card mdl-shadow--2dp pa-0">
-                  <div class="mdl-card__title pa-0">
-                    <h5 class="block pt-25 pb-20">basic</h5>
-                    <div class="price-bg">
-                      <span class="panel-price block font-blue"
-                        ><span class="pricing-dolor">$</span>49</span
-                      >
-                      <span class="pricing-plan block pt-10">per month</span>
-                    </div>
-                  </div>
-                  <div class="mdl-card__supporting-text text-center pa-0">
-                    <ul class="list-group mb-0 text-center">
-                      <li class="list-group-item">1 website</li>
-                      <li class="list-group-item">30 GB Storage</li>
-                      <li class="list-group-item">Unlimited bandwidth</li>
-                      <li class="list-group-item">Free email included</li>
-                    </ul>
-                  </div>
-                  <div class="mdl-card__actions pt-30 pb-30">
-                    <a
-                      class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect bg-green font-white"
-                      href="index.html#"
-                      >buy now</a
-                    >
-                  </div>
-                </div>
-              </div>
-              <!-- /item -->
-              <!-- item -->
-              <div class="col-sm-4 text-center mb-30">
-                <div class="mdl-card mdl-shadow--2dp pa-0">
-                  <div class="mdl-card__title pa-0">
-                    <h5 class="block pt-25 pb-20">standard</h5>
-                    <div class="price-bg">
-                      <span class="panel-price block font-blue"
-                        ><span class="pricing-dolor">$</span>99</span
-                      >
-                      <span class="pricing-plan block pt-10">per month</span>
-                    </div>
-                  </div>
-                  <div class="mdl-card__supporting-text text-center pa-0">
-                    <ul class="list-group mb-0 text-center">
-                      <li class="list-group-item">1 website</li>
-                      <li class="list-group-item">100 GB storage</li>
-                      <li class="list-group-item">Unlimited bandwidth</li>
-                      <li class="list-group-item">Free domain & email</li>
-                    </ul>
-                  </div>
-                  <div class="mdl-card__actions pt-30 pb-30">
-                    <a
-                      class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect bg-green font-white"
-                      href="index.html#"
-                      >buy now</a
-                    >
-                  </div>
-                </div>
-              </div>
-              <!-- /item -->
-              <!-- item -->
-              <div class="col-sm-4 text-center mb-30">
-                <div class="mdl-card mdl-shadow--2dp pa-0">
-                  <div class="mdl-card__title pa-0">
-                    <h5 class="block pt-25 pb-20">business</h5>
-                    <div class="price-bg">
-                      <span class="panel-price block font-blue"
-                        ><span class="pricing-dolor">$</span>199</span
-                      >
-                      <span class="pricing-plan block pt-10">per month</span>
-                    </div>
-                  </div>
-                  <div class="mdl-card__supporting-text text-center pa-0">
-                    <ul class="list-group mb-0 text-center">
-                      <li class="list-group-item">Unlimited websites</li>
-                      <li class="list-group-item">Unlimited storage</li>
-                      <li class="list-group-item">Unlimited bandwidth</li>
-                      <li class="list-group-item">Free domain & email</li>
-                    </ul>
-                  </div>
-                  <div class="mdl-card__actions pt-30 pb-30">
-                    <a
-                      class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect bg-green font-white"
-                      href="index.html#"
-                      >buy now</a
-                    >
-                  </div>
-                </div>
-              </div>
-              <!-- /item -->
-            </div>
-          </section>
-          <!--/Price Sec-->
-
-          <!--Contact Sec-->
-          <section id="contact_sec" class="contact-sec sec-pad-top-sm">
-            <h2 class="mb-35">contact</h2>
-            <div class="row">
-              <div id="form_card_height" class="col-sm-7 mb-30">
-                <div class="mdl-card mdl-shadow--2dp" data-ng-controller="ContactController">
-                  <h4 class="mb-10 font-unsetcase">
-                    Hey <span data-ng-bind="formData.inputName||'There'">There</span>, happy to hear
-                    from you.
-                  </h4>
-                  <form
-                    data-ng-submit="submit(contactform, $event)"
-                    name="contactform"
-                    method="post"
-                    class="form-horizontal mb-30"
-                    role="form"
-                  >
-                    <div
-                      class="form-group"
-                      data-ng-class="{ 'has-error': contactform.inputName.$invalid && submitted }"
-                    >
-                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input
-                          autocomplete="off"
-                          data-ng-model="formData.inputName"
-                          class="mdl-textfield__input"
-                          type="text"
-                          id="inputName"
-                          name="inputName"
-                          required
-                        />
-                        <label class="mdl-textfield__label" for="inputName">name*</label>
-                      </div>
-                    </div>
-                    <div
-                      class="form-group"
-                      data-ng-class="{ 'has-error': contactform.inputEmail.$invalid && submitted }"
-                    >
-                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <input
-                          autocomplete="off"
-                          data-ng-model="formData.inputEmail"
-                          class="mdl-textfield__input"
-                          type="email"
-                          id="inputEmail"
-                          name="inputEmail"
-                          required
-                        />
-                        <label class="mdl-textfield__label" for="inputEmail">email*</label>
-                      </div>
-                    </div>
-                    <div
-                      class="form-group"
-                      data-ng-class="{ 'has-error': contactform.inputMessage.$invalid && submitted }"
-                    >
-                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                        <textarea
-                          data-ng-model="formData.inputMessage"
-                          class="mdl-textfield__input"
-                          rows="3"
-                          id="inputMessage"
-                          name="inputMessage"
-                          required
-                        ></textarea>
-                        <label class="mdl-textfield__label" for="inputMessage">message*</label>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="align-center">
-                        <button
-                          type="submit"
-                          class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect bg-blue font-white"
-                          data-ng-disabled="submitButtonDisabled"
-                        >
-                          submit
-                        </button>
-                      </div>
-                    </div>
-                  </form>
-                  <p class="block result" data-ng-class="result">{{ resultMessage }}</p>
-                </div>
-              </div>
-              <div class="col-sm-5 mb-30">
-                <div class="mdl-card mdl-shadow--2dp pa-0">
-                  <div id="map_canvas"></div>
-                </div>
-              </div>
-            </div>
-          </section>
-          <!--/Contact Sec-->
-
-          <!--Footer Sec-->
-          <footer class="footer-sec sec-pad-top-sm sec-pad-bottom text-center">
-            <h4>thank you for visiting.</h4>
-            <p class="mt-10">Hencework 2017. All rights reserved.</p>
-            <ul class="social-icons mt-10">
-              <li>
-                <a class="facebook-link" href="index.html#">
-                  <i id="tt6" class="zmdi zmdi-facebook"></i>
-                  <div class="mdl-tooltip" data-mdl-for="tt6">facebook</div>
-                </a>
-              </li>
-              <li>
-                <a class="twitter-link" href="index.html#">
-                  <i id="tt7" class="zmdi zmdi-twitter"></i>
-                  <div class="mdl-tooltip" data-mdl-for="tt7">twitter</div>
-                </a>
-              </li>
-              <li>
-                <a class="linkedin-link" href="index.html#">
-                  <i id="tt8" class="zmdi zmdi-linkedin"></i>
-                  <div class="mdl-tooltip" data-mdl-for="tt8">linkedin</div>
-                </a>
-              </li>
-              <li>
-                <a class="dribbble-link" href="index.html#">
-                  <i id="tt9" class="zmdi zmdi-dribbble"></i>
-                  <div class="mdl-tooltip" data-mdl-for="tt9">dribbble</div>
-                </a>
-              </li>
-              <li>
-                <a class="instagram-link" href="index.html#">
-                  <i id="tt10" class="zmdi zmdi-instagram"></i>
-                  <div class="mdl-tooltip" data-mdl-for="tt10">instagram</div>
-                </a>
-              </li>
-            </ul>
-          </footer>
-          <!--Footer Sec-->
-        </div>
-      </div>
-      <!--/Main Content-->
-
-      <!--Setting Trigger-->
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Benjamin Otchere Boakye</a>
       <button
-        class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-shadow--8dp bg-red setting-btn"
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
       >
-        <i class="zmdi zmdi-settings"></i>
+        <span class="navbar-toggler-icon"></span>
       </button>
-      <!--/Setting Trigger-->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#skills">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#experience">Experience</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#projects">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#education">Education</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-  <!--/Main Wrapper-->
+  </nav>
 
-  <!-- <RouterView /> -->
+  <!-- Hero Section -->
+  <header
+    class="bg-primary text-white py-10"
+    style="
+      background-image: url('/src/assets/img/img-bg-1.jpg');
+      background-size: cover;
+      background-position: center;
+      border-radius: 1rem;
+    "
+  >
+    <div
+      class="container py-5 card"
+      style="background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(8px); border: none"
+    >
+      <div class="row align-items-center">
+        <div class="col-lg-6">
+          <div class="ms-4">
+            <h1 class="display-4 fw-bold mb-4 text-dark">Benjamin Otchere Boakye</h1>
+            <h2 class="h4 mb-4 text-dark">Full Stack Software Engineer</h2>
+            <p class="lead mb-4 text-dark">
+              5+ years of experience designing, developing, and scaling enterprise-level web
+              applications.
+            </p>
+            <div class="d-flex gap-3">
+              <a href="#contact" class="btn btn-light btn-md px-4">Contact Me</a>
+              <a href="#" class="btn btn-outline-secondary btn-md px-4">Download CV</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 mt-5 mt-lg-0">
+          <div class="d-flex justify-content-center align-items-center" style="height: 300px">
+            <img
+              src="/src/assets/img/avatar.png"
+              alt="Benjamin Otchere Boakye"
+              class="img-fluid rounded-circle"
+
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section id="about" class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <h2 class="fw-bold mb-4">About Me</h2>
+          <p class="lead">
+            Passionate about building secure, scalable, and high-performance solutions using modern
+            web technologies, cloud computing, and microservices architecture.
+          </p>
+          <p>
+            Experienced in mentoring teams, leading projects, and implementing Agile methodologies
+            to deliver efficient solutions that align with business needs and user satisfaction.
+          </p>
+
+          <div class="row mt-4">
+            <div class="col-md-6">
+              <ul class="list-unstyled">
+                <li class="mb-2"><strong>Age:</strong> {{ age }}</li>
+                <li class="mb-2"><strong>Location:</strong> London, UK</li>
+                <li class="mb-2"><strong>Email:</strong> nanaboakyeyiadom18@gmail.com</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <ul class="list-unstyled">
+                <li class="mb-2"><strong>Phone:</strong> +44 7796 005063</li>
+                <li class="mb-2"><strong>Freelance:</strong> Available </li>
+                <li class="mb-2">
+                  <strong>Social:</strong>
+                  <span class="ms-1">
+                    <a href="https://github.com/NABY-Inc" target="_blank" class="me-2 text-dark" title="GitHub">
+                      <i class="bi bi-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/benjamin-otchere-boakye-204b96160" target="_blank" class="me-2 text-primary" title="LinkedIn">
+                      <i class="bi bi-linkedin"></i>
+                    </a>
+                    <a href="https://wakatime.com/@naby" target="_blank" class="text-info" title="Wakatime">
+                      <i class="bi bi-bar-chart"></i>
+                    </a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h3 class="h5 mb-4">Technical Expertise</h3>
+              <div class="mb-3">
+                <h4 class="h6">Programming Languages</h4>
+                <div class="d-flex flex-wrap gap-2 mt-2">
+                  <span class="badge bg-primary">PHP</span>
+                  <span class="badge bg-primary">JavaScript</span>
+                  <span class="badge bg-primary">Python</span>
+                  <span class="badge bg-primary">SQL</span>
+                  <span class="badge bg-primary">C#</span>
+                  <span class="badge bg-primary">.NET</span>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <h4 class="h6">Frameworks & Libraries</h4>
+                <div class="d-flex flex-wrap gap-2 mt-2">
+                  <span class="badge bg-success">Laravel</span>
+                  <span class="badge bg-success">Vue.js</span>
+                  <span class="badge bg-success">React.js</span>
+                  <span class="badge bg-success">Django</span>
+                  <span class="badge bg-success">Bootstrap</span>
+                  <span class="badge bg-success">Tailwind</span>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <h4 class="h6">Cloud & DevOps</h4>
+                <div class="d-flex flex-wrap gap-2 mt-2">
+                  <span class="badge bg-info">AWS</span>
+                  <span class="badge bg-info">Azure</span>
+                  <span class="badge bg-info">Docker</span>
+                  <span class="badge bg-info">Linux</span>
+                  <span class="badge bg-info">Git</span>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <h4 class="h6">Databases</h4>
+                <div class="d-flex flex-wrap gap-2 mt-2">
+                  <span class="badge bg-warning text-dark">MySQL</span>
+                  <span class="badge bg-warning text-dark">MongoDB</span>
+                  <span class="badge bg-warning text-dark">PostgreSQL</span>
+                  <span class="badge bg-warning text-dark">GraphQL</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="fw-bold text-center mb-5">Technical Skills</h2>
+
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="h5 mb-4">Frontend Development</h3>
+              <div class="skill-item mb-3">
+                <div class="d-flex justify-content-between mb-1">
+                  <span>React.js</span>
+                  <span>90%</span>
+                </div>
+                <div class="progress" style="height: 8px">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 90%"></div>
+                </div>
+              </div>
+              <div class="skill-item mb-3">
+                <div class="d-flex justify-content-between mb-1">
+                  <span>Vue.js</span>
+                  <span>85%</span>
+                </div>
+                <div class="progress" style="height: 8px">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 85%"></div>
+                </div>
+              </div>
+              <div class="skill-item mb-3">
+                <div class="d-flex justify-content-between mb-1">
+                  <span>JavaScript/TypeScript</span>
+                  <span>95%</span>
+                </div>
+                <div class="progress" style="height: 8px">
+                  <div class="progress-bar bg-primary" role="progressbar" style="width: 95%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="h5 mb-4">Backend Development</h3>
+              <div class="skill-item mb-3">
+                <div class="d-flex justify-content-between mb-1">
+                  <span>PHP/Laravel</span>
+                  <span>95%</span>
+                </div>
+                <div class="progress" style="height: 8px">
+                  <div class="progress-bar bg-success" role="progressbar" style="width: 95%"></div>
+                </div>
+              </div>
+              <div class="skill-item mb-3">
+                <div class="d-flex justify-content-between mb-1">
+                  <span>Python/Django</span>
+                  <span>85%</span>
+                </div>
+                <div class="progress" style="height: 8px">
+                  <div class="progress-bar bg-success" role="progressbar" style="width: 85%"></div>
+                </div>
+              </div>
+              <div class="skill-item mb-3">
+                <div class="d-flex justify-content-between mb-1">
+                  <span>C#/.NET</span>
+                  <span>80%</span>
+                </div>
+                <div class="progress" style="height: 8px">
+                  <div class="progress-bar bg-success" role="progressbar" style="width: 80%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="h5 mb-4">DevOps & Cloud</h3>
+              <div class="skill-item mb-3">
+                <div class="d-flex justify-content-between mb-1">
+                  <span>AWS Services</span>
+                  <span>85%</span>
+                </div>
+                <div class="progress" style="height: 8px">
+                  <div class="progress-bar bg-info" role="progressbar" style="width: 85%"></div>
+                </div>
+              </div>
+              <div class="skill-item mb-3">
+                <div class="d-flex justify-content-between mb-1">
+                  <span>Docker</span>
+                  <span>80%</span>
+                </div>
+                <div class="progress" style="height: 8px">
+                  <div class="progress-bar bg-info" role="progressbar" style="width: 80%"></div>
+                </div>
+              </div>
+              <div class="skill-item mb-3">
+                <div class="d-flex justify-content-between mb-1">
+                  <span>CI/CD Pipelines</span>
+                  <span>75%</span>
+                </div>
+                <div class="progress" style="height: 8px">
+                  <div class="progress-bar bg-info" role="progressbar" style="width: 75%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="h5 mb-4">Database & Architecture</h3>
+              <div class="skill-item mb-3">
+                <div class="d-flex justify-content-between mb-1">
+                  <span>SQL Databases</span>
+                  <span>90%</span>
+                </div>
+                <div class="progress" style="height: 8px">
+                  <div class="progress-bar bg-warning" role="progressbar" style="width: 90%"></div>
+                </div>
+              </div>
+              <div class="skill-item mb-3">
+                <div class="d-flex justify-content-between mb-1">
+                  <span>NoSQL Databases</span>
+                  <span>80%</span>
+                </div>
+                <div class="progress" style="height: 8px">
+                  <div class="progress-bar bg-warning" role="progressbar" style="width: 80%"></div>
+                </div>
+              </div>
+              <div class="skill-item mb-3">
+                <div class="d-flex justify-content-between mb-1">
+                  <span>Microservices Architecture</span>
+                  <span>85%</span>
+                </div>
+                <div class="progress" style="height: 8px">
+                  <div class="progress-bar bg-warning" role="progressbar" style="width: 85%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="py-5">
+    <div class="container">
+      <h2 class="fw-bold text-center mb-5">Work Experience</h2>
+
+      <div class="timeline">
+        <!-- Benogis Innovations -->
+        <div class="timeline-item">
+          <div class="timeline-date">June 2022 – Present</div>
+          <div class="timeline-content card shadow-sm">
+            <div class="card-body">
+              <h3 class="h5">Benogis Innovations, Co-Founder & Lead Software Engineer</h3>
+              <p class="text-muted">London</p>
+              <ul>
+                <li>
+                  Spearheaded the development of EduLink Network, a multi-service platform using
+                  Laravel, Vue.js, MySQL, and GraphQL.
+                </li>
+                <li>
+                  Designed and deployed scalable microservices architectures with Docker and AWS
+                  (RDS, EC2, ECS, S3, Lambda).
+                </li>
+                <li>
+                  Led code reviews, mentored junior developers, and established Agile best
+                  practices.
+                </li>
+                <li>
+                  Implemented advanced security measures (user authentication, data encryption) to
+                  align with industry standards.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Route to Transition -->
+        <div class="timeline-item">
+          <div class="timeline-date">May 2024 – Present</div>
+          <div class="timeline-content card shadow-sm">
+            <div class="card-body">
+              <h3 class="h5">Route to Transition, IT Systems Administrator <span class="text-muted">(Part-time)</span></h3>
+              <p class="text-muted">London</p>
+              <ul>
+                <li>
+                  Managed critical IT infrastructure, ensuring system reliability and security in
+                  compliance with OFSTED regulations.
+                </li>
+                <li>
+                  Provided technical training for staff, enhancing productivity with new IT systems
+                  and automation.
+                </li>
+                <li>
+                  Optimized workflow processes with innovative solutions, contributing to
+                  organizational efficiency.
+                </li>
+                <li>
+                  Optimized internal processes using Microsoft Intune and cloud-based solutions.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Africa Systems Ltd -->
+        <div class="timeline-item">
+          <div class="timeline-date">Mar 2024 – May 2024</div>
+          <div class="timeline-content card shadow-sm">
+            <div class="card-body">
+              <h3 class="h5">Africa Systems Ltd, Software Engineer (Laravel Framework)</h3>
+              <p class="text-muted">South Africa, Remote</p>
+              <ul>
+                <li>
+                  Developed and Optimized the SWITCH Network using Laravel's .NET Core One
+                  framework.
+                </li>
+                <li>
+                  Enhanced fintech capabilities by implementing distributed ledger technology and
+                  database optimizations.
+                </li>
+                <li>
+                  Worked closely with UI/UX designers and development teams to ensure seamless
+                  integration of features.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Banko City University -->
+        <div class="timeline-item">
+          <div class="timeline-date">Jan 2023 – Jun 2023</div>
+          <div class="timeline-content card shadow-sm">
+            <div class="card-body">
+              <h3 class="h5">Banko City University, Software Developer</h3>
+              <p class="text-muted">Ghana</p>
+              <ul>
+                <li>
+                  Led the design and development of software programs that optimized university
+                  processes.
+                </li>
+                <li>
+                  Developed an automated data entry system for receipt processing, reducing manual
+                  workload and decreasing data entry errors by 30%.
+                </li>
+                <li>Implemented strategic automation, saving an estimated 20+ hours weekly.</li>
+                <li>
+                  Designed and deployed scalable database architectures in MySQL, optimizing query
+                  performance.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Smart-Tech Solutions -->
+        <div class="timeline-item">
+          <div class="timeline-date">Sep 2022 – Dec 2022</div>
+          <div class="timeline-content card shadow-sm">
+            <div class="card-body">
+              <h3 class="h5">Smart-Tech Solutions, Software Developer</h3>
+              <p class="text-muted">Ghana</p>
+              <ul>
+                <li>
+                  Developed a web application using PHP (Laravel) and React.js, enhancing user
+                  experience and improving system performance by over 40%.
+                </li>
+                <li>
+                  Applied Agile methodologies to streamline project delivery and maintained detailed
+                  documentation.
+                </li>
+                <li>Conducted software testing and documentation for long-term maintainability.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="fw-bold text-center mb-5">Key Projects</h2>
+
+      <div class="row g-4">
+        <!-- EduLink Network -->
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="h5">EduLink Network</h3>
+              <p class="text-muted">All-in-one educational platform for schools in Ghana</p>
+              <p>
+                Built with Laravel, Vue, GraphQL, and AWS. Provides comprehensive school management
+                solutions including student records management, academic performance tracking, financial tracking, attendance tracking, and communication tools.
+              </p>
+              <div class="d-flex flex-wrap gap-2 mt-3">
+                <span class="badge bg-primary">Laravel</span>
+                <span class="badge bg-primary">React.js</span>
+                <span class="badge bg-primary">GraphQL</span>
+                <span class="badge bg-primary">AWS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Strenuous Effort Mini Banking System -->
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="h5">Strenuous Effort Mini Banking System</h3>
+              <p class="text-muted">
+                Micro-banking solution with robust financial security features
+              </p>
+              <p>
+                Engineered a secure banking platform with transaction processing, account
+                management, and financial reporting capabilities.
+              </p>
+              <div class="d-flex flex-wrap gap-2 mt-3">
+                <span class="badge bg-success">PHP</span>
+                <span class="badge bg-success">MySQL</span>
+                <span class="badge bg-success">JavaScript</span>
+                <span class="badge bg-success">Security</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Collaboration System -->
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h3 class="h5">Project Collaboration System</h3>
+              <p class="text-muted">Real-time collaboration platform</p>
+              <p>
+                Developed a project management tool to enhance team collaboration with task
+                tracking, document sharing, and real-time communication features.
+              </p>
+              <div class="d-flex flex-wrap gap-2 mt-3">
+                <span class="badge bg-info">Vue.js</span>
+                <span class="badge bg-info">Node.js</span>
+                <span class="badge bg-info">WebSockets</span>
+                <span class="badge bg-info">MongoDB</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education & Certifications -->
+  <section id="education" class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <h2 class="fw-bold mb-4">Education</h2>
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h3 class="h5">University of Education, Winneba</h3>
+              <p class="text-muted">BSc in Information Technology</p>
+              <p>July 2021</p>
+              <p>
+                Specialized in Information Technology with a strong focus on software engineering, database systems, networking, and IT project management. Developed practical skills in programming, systems analysis, and deploying technology solutions to solve real-world business challenges.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <h2 class="fw-bold mb-4">Certifications</h2>
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Backend & Frontend Development
+                  <span class="badge bg-primary rounded-pill">Dec 2024</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Active Directory Basics
+                  <span class="badge bg-primary rounded-pill">Oct 2024</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Introduction to AWS
+                  <span class="badge bg-primary rounded-pill">Oct 2024</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Understanding Cloud Computing
+                  <span class="badge bg-primary rounded-pill">Sept 2024</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Cybersecurity
+                  <span class="badge bg-primary rounded-pill">Aug 2019</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  Internet of Things
+                  <span class="badge bg-primary rounded-pill">June 2019</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-5 bg-dark text-white">
+    <div class="container">
+      <h2 class="fw-bold text-center mb-5">Get In Touch</h2>
+
+      <div class="row">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="card bg-secondary text-white shadow-sm">
+            <div class="card-body">
+              <h3 class="h4 mb-4">Contact Information</h3>
+              <ul class="list-unstyled">
+                <li class="mb-3">
+                  <i class="bi bi-envelope me-3"></i>
+                  <a href="mailto:nanaboakyeyiadom18@gmail.com" class="text-white"
+                    >nanaboakyeyiadom18@gmail.com</a
+                  >
+                </li>
+                <li class="mb-3">
+                  <i class="bi bi-phone me-3"></i>
+                  <a href="tel:+447796005063" class="text-white">+44 7796 005063</a>
+                </li>
+                <li class="mb-3">
+                  <i class="bi bi-linkedin me-3"></i>
+                  <a
+                    href="https://www.linkedin.com/in/benjamin-otchere-boakye-204b96160"
+                    target="_blank"
+                    class="text-white"
+                    >LinkedIn Profile</a
+                  >
+                </li>
+                <li class="mb-3">
+                  <i class="bi bi-geo-alt me-3"></i>
+                  London, United Kingdom
+                </li>
+              </ul>
+
+              <div class="mt-5">
+                <h4 class="h5 mb-3">Connect With Me</h4>
+                <div class="d-flex gap-3">
+                  <a href="#" class="text-white"><i class="bi bi-github fs-4"></i></a>
+                  <a href="#" class="text-white"><i class="bi bi-linkedin fs-4"></i></a>
+                  <a href="#" class="text-white"><i class="bi bi-twitter fs-4"></i></a>
+                  <a href="#" class="text-white"><i class="bi bi-facebook fs-4"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card bg-secondary text-white shadow-sm">
+            <div class="card-body">
+              <h3 class="h4 mb-4">Send Me a Message</h3>
+              <form>
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <input type="text" class="form-control bg-dark text-white" id="name" required />
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" class="form-control bg-dark text-white" id="email" required />
+                </div>
+                <div class="mb-3">
+                  <label for="subject" class="form-label">Subject</label>
+                  <input
+                    type="text"
+                    class="form-control bg-dark text-white"
+                    id="subject"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="message" class="form-label">Message</label>
+                  <textarea
+                    class="form-control bg-dark text-white"
+                    id="message"
+                    rows="4"
+                    required
+                  ></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-4 bg-black text-white">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="mb-0">&copy; {{ currentYear }} Benjamin Otchere Boakye. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <div class="d-flex justify-content-center justify-content-md-end gap-3">
+            <a href="#" class="text-white"><i class="bi bi-github"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 </template>
 
-<style scoped></style>
+<style scoped>
+/* Custom Timeline Styles */
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 50px;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background-color: #0d6efd;
+  top: 0;
+  bottom: 0;
+  left: 25px;
+  margin-left: -3px;
+}
+
+.timeline-item {
+  padding: 10px 0;
+  position: relative;
+}
+
+.timeline-content {
+  padding: 20px;
+  position: relative;
+  border-radius: 6px;
+}
+
+.timeline-date {
+  text-align: right;
+  font-weight: bold;
+  color: #0d6efd;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .timeline {
+    padding-left: 25px;
+  }
+
+  .timeline::after {
+    left: 15px;
+  }
+
+  .timeline-item::after {
+    left: 5px;
+  }
+
+  .timeline-date {
+    position: relative;
+    left: 0;
+    text-align: left;
+    width: auto;
+    margin-bottom: 10px;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Navbar active link highlight */
+.navbar-nav .nav-link.active {
+  color: #0d6efd;
+  font-weight: bold;
+}
+
+/* Section padding */
+section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+/* Hero section */
+header {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+/* Card hover effect */
+.card {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+</style>
