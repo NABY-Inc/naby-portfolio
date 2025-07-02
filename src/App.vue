@@ -1,10 +1,59 @@
 <script setup lang="ts">
-// import { ref } from 'vue'
+import { ref } from 'vue'
 import heroBg from '@/assets/img/img-bg-1.jpg'
 
 const currentYear = new Date().getFullYear()
 const age = currentYear - 1997 // Assuming birth year is 1997 based on your CV
-// const resultMessage = ref('')
+
+const downloadCV = () => {
+  const link = document.createElement('a')
+  link.href = new URL('@/assets/cv.pdf', import.meta.url).href
+  link.download = 'Benjamin_Otchere_Boakye_CV.pdf'
+  link.click()
+}
+
+const name = ref('')
+const email = ref('')
+const subject = ref('')
+const message = ref('')
+const sending = ref(false)
+const sendSuccess = ref(false)
+const sendError = ref('')
+
+const handleSubmit = async (e: Event) => {
+  e.preventDefault()
+  sending.value = true
+  sendSuccess.value = false
+  sendError.value = ''
+
+  try {
+    // Replace with your backend endpoint or email service API
+    const response = await fetch('https://formspree.io/f/xrbkdgdz', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: name.value,
+        email: email.value,
+        subject: subject.value,
+        message: message.value,
+      }),
+    })
+
+    if (response.ok) {
+      sendSuccess.value = true
+      name.value = ''
+      email.value = ''
+      subject.value = ''
+      message.value = ''
+    } else {
+      sendError.value = 'Failed to send message. Please try again later.'
+    }
+  } catch (err) {
+    sendError.value = 'An error occurred. Please try again.'
+  } finally {
+    sending.value = false
+  }
+}
 </script>
 
 <template>
@@ -47,14 +96,14 @@ const age = currentYear - 1997 // Assuming birth year is 1997 based on your CV
 
   <!-- Hero Section -->
   <header
-      class="bg-primary text-white py-10"
-      :style="{
-        backgroundImage: `url('${heroBg}')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        borderRadius: '1rem',
-      }"
-    >
+    class="bg-primary text-white py-10"
+    :style="{
+      backgroundImage: `url('${heroBg}')`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      borderRadius: '1rem',
+    }"
+  >
     <div
       class="container py-5 card"
       style="background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(8px); border: none"
@@ -70,7 +119,9 @@ const age = currentYear - 1997 // Assuming birth year is 1997 based on your CV
             </p>
             <div class="d-flex gap-3">
               <a href="#contact" class="btn btn-light btn-md px-4">Contact Me</a>
-              <a href="#" class="btn btn-outline-secondary btn-md px-4">Download CV</a>
+              <a href="#" @click.prevent="downloadCV" class="btn btn-outline-secondary btn-md px-4"
+                >Download CV</a
+              >
             </div>
           </div>
         </div>
@@ -80,7 +131,6 @@ const age = currentYear - 1997 // Assuming birth year is 1997 based on your CV
               src="/src/assets/img/avatar.png"
               alt="Benjamin Otchere Boakye"
               class="img-fluid rounded-circle"
-
             />
           </div>
         </div>
@@ -114,17 +164,32 @@ const age = currentYear - 1997 // Assuming birth year is 1997 based on your CV
             <div class="col-md-6">
               <ul class="list-unstyled">
                 <li class="mb-2"><strong>Phone:</strong> +44 7796 005063</li>
-                <li class="mb-2"><strong>Freelance:</strong> Available </li>
+                <li class="mb-2"><strong>Freelance:</strong> Available</li>
                 <li class="mb-2">
                   <strong>Social:</strong>
                   <span class="ms-1">
-                    <a href="https://github.com/NABY-Inc" target="_blank" class="me-2 text-dark" title="GitHub">
+                    <a
+                      href="https://github.com/NABY-Inc"
+                      target="_blank"
+                      class="me-2 text-dark"
+                      title="GitHub"
+                    >
                       <i class="bi bi-github"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/benjamin-otchere-boakye-204b96160" target="_blank" class="me-2 text-primary" title="LinkedIn">
+                    <a
+                      href="https://www.linkedin.com/in/benjamin-otchere-boakye-204b96160"
+                      target="_blank"
+                      class="me-2 text-primary"
+                      title="LinkedIn"
+                    >
                       <i class="bi bi-linkedin"></i>
                     </a>
-                    <a href="https://wakatime.com/@naby" target="_blank" class="text-info" title="Wakatime">
+                    <a
+                      href="https://wakatime.com/@naby"
+                      target="_blank"
+                      class="text-info"
+                      title="Wakatime"
+                    >
                       <i class="bi bi-bar-chart"></i>
                     </a>
                   </span>
@@ -377,7 +442,10 @@ const age = currentYear - 1997 // Assuming birth year is 1997 based on your CV
           <div class="timeline-date">May 2024 – Present</div>
           <div class="timeline-content card shadow-sm">
             <div class="card-body">
-              <h3 class="h5">Route to Transition, IT Systems Administrator <span class="text-muted">(Part-time)</span></h3>
+              <h3 class="h5">
+                Route to Transition, IT Systems Administrator
+                <span class="text-muted">(Part-time)</span>
+              </h3>
               <p class="text-muted">London</p>
               <ul>
                 <li>
@@ -490,7 +558,8 @@ const age = currentYear - 1997 // Assuming birth year is 1997 based on your CV
               <p class="text-muted">All-in-one educational platform for schools in Ghana</p>
               <p>
                 Built with Laravel, Vue, GraphQL, and AWS. Provides comprehensive school management
-                solutions including student records management, academic performance tracking, financial tracking, attendance tracking, and communication tools.
+                solutions including student records management, academic performance tracking,
+                financial tracking, attendance tracking, and communication tools.
               </p>
               <div class="d-flex flex-wrap gap-2 mt-3">
                 <span class="badge bg-primary">Laravel</span>
@@ -559,7 +628,10 @@ const age = currentYear - 1997 // Assuming birth year is 1997 based on your CV
               <p class="text-muted">BSc in Information Technology</p>
               <p>July 2021</p>
               <p>
-                Specialized in Information Technology with a strong focus on software engineering, database systems, networking, and IT project management. Developed practical skills in programming, systems analysis, and deploying technology solutions to solve real-world business challenges.
+                Specialized in Information Technology with a strong focus on software engineering,
+                database systems, networking, and IT project management. Developed practical skills
+                in programming, systems analysis, and deploying technology solutions to solve
+                real-world business challenges.
               </p>
             </div>
           </div>
@@ -641,10 +713,34 @@ const age = currentYear - 1997 // Assuming birth year is 1997 based on your CV
               <div class="mt-5">
                 <h4 class="h5 mb-3">Connect With Me</h4>
                 <div class="d-flex gap-3">
-                  <a href="#" class="text-white"><i class="bi bi-github fs-4"></i></a>
-                  <a href="#" class="text-white"><i class="bi bi-linkedin fs-4"></i></a>
-                  <a href="#" class="text-white"><i class="bi bi-twitter fs-4"></i></a>
-                  <a href="#" class="text-white"><i class="bi bi-facebook fs-4"></i></a>
+                  <a
+                    href="https://github.com/NABY-Inc"
+                    target="_blank"
+                    class="text-white"
+                    title="GitHub"
+                    ><i class="bi bi-github fs-4"></i
+                  ></a>
+                  <a
+                    href="https://www.linkedin.com/in/benjamin-otchere-boakye-204b96160"
+                    target="_blank"
+                    class="text-white"
+                    title="LinkedIn"
+                    ><i class="bi bi-linkedin fs-4"></i
+                  ></a>
+                  <a
+                    href="https://www.x.com/naby45830863"
+                    target="_blank"
+                    class="text-white"
+                    title="Twitter"
+                    ><i class="bi bi-twitter fs-4"></i
+                  ></a>
+                  <a
+                    href="https://www.facebook.com/nabyJee"
+                    target="_blank"
+                    class="text-white"
+                    title="Facebook"
+                    ><i class="bi bi-facebook fs-4"></i
+                  ></a>
                 </div>
               </div>
             </div>
@@ -655,18 +751,31 @@ const age = currentYear - 1997 // Assuming birth year is 1997 based on your CV
           <div class="card bg-secondary text-white shadow-sm">
             <div class="card-body">
               <h3 class="h4 mb-4">Send Me a Message</h3>
-              <form>
+              <form @submit.prevent="handleSubmit">
                 <div class="mb-3">
                   <label for="name" class="form-label">Name</label>
-                  <input type="text" class="form-control bg-dark text-white" id="name" required />
+                  <input
+                    v-model="name"
+                    type="text"
+                    class="form-control bg-dark text-white"
+                    id="name"
+                    required
+                  />
                 </div>
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control bg-dark text-white" id="email" required />
+                  <input
+                    v-model="email"
+                    type="email"
+                    class="form-control bg-dark text-white"
+                    id="email"
+                    required
+                  />
                 </div>
                 <div class="mb-3">
                   <label for="subject" class="form-label">Subject</label>
                   <input
+                    v-model="subject"
                     type="text"
                     class="form-control bg-dark text-white"
                     id="subject"
@@ -676,14 +785,24 @@ const age = currentYear - 1997 // Assuming birth year is 1997 based on your CV
                 <div class="mb-3">
                   <label for="message" class="form-label">Message</label>
                   <textarea
+                    v-model="message"
                     class="form-control bg-dark text-white"
                     id="message"
                     rows="4"
                     required
                   ></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Send Message</button>
+                <button type="submit" class="btn btn-primary" :disabled="sending">
+                  <span v-if="sending">Sending...</span>
+                  <span v-else>Send Message</span>
+                </button>
               </form>
+              <div v-if="sendSuccess" class="alert alert-success mt-3" role="alert">
+                Message sent successfully! I will get back to you soon. Have a great day!
+              </div>
+              <div v-if="sendError" class="alert alert-danger mt-3" role="alert">
+                {{ sendError }}
+              </div>
             </div>
           </div>
         </div>
@@ -700,10 +819,30 @@ const age = currentYear - 1997 // Assuming birth year is 1997 based on your CV
         </div>
         <div class="col-md-6 text-center text-md-end">
           <div class="d-flex justify-content-center justify-content-md-end gap-3">
-            <a href="#" class="text-white"><i class="bi bi-github"></i></a>
-            <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
-            <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
-            <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
+            <a href="https://github.com/NABY-Inc" target="_blank" class="text-white" title="GitHub"
+              ><i class="bi bi-github"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/in/benjamin-otchere-boakye-204b96160"
+              target="_blank"
+              class="text-white"
+              title="LinkedIn"
+              ><i class="bi bi-linkedin"></i
+            ></a>
+            <a
+              href="https://www.x.com/naby45830863"
+              target="_blank"
+              class="text-white"
+              title="Twitter"
+              ><i class="bi bi-twitter"></i
+            ></a>
+            <a
+              href="https://www.facebook.com/nabyJee"
+              target="_blank"
+              class="text-white"
+              title="Facebook"
+              ><i class="bi bi-facebook"></i
+            ></a>
           </div>
         </div>
       </div>
