@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+// import { ref } from 'vue'
 
 const currentYear = new Date().getFullYear()
 const age = currentYear - 1997 // Assuming birth year is 1997 based on your CV
-const resultMessage = ref('')
+import heroBg from '@/assets/img/img-bg-1.jpg'
+// const resultMessage = ref('')
+
+// Import the image so Vite/Webpack handles it correctly in production
 </script>
 
 <template>
@@ -42,50 +45,48 @@ const resultMessage = ref('')
         </ul>
       </div>
     </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <header
-    class="bg-primary text-white py-10"
-    style="
-      background-image: url('/src/assets/img/img-bg-1.jpg');
-      background-size: cover;
-      background-position: center;
-      border-radius: 1rem;
-    "
-  >
-    <div
-      class="container py-5 card"
-      style="background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(8px); border: none"
+    <header
+      class="bg-primary text-white py-10"
+      :style="{
+        backgroundImage: `url('${heroBg}')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        borderRadius: '1rem',
+      }"
     >
-      <div class="row align-items-center">
-        <div class="col-lg-6">
-          <div class="ms-4">
-            <h1 class="display-4 fw-bold mb-4 text-dark">Benjamin Otchere Boakye</h1>
-            <h2 class="h4 mb-4 text-dark">Full Stack Software Engineer</h2>
-            <p class="lead mb-4 text-dark">
-              5+ years of experience designing, developing, and scaling enterprise-level web
-              applications.
-            </p>
-            <div class="d-flex gap-3">
-              <a href="#contact" class="btn btn-light btn-md px-4">Contact Me</a>
-              <a href="#" class="btn btn-outline-secondary btn-md px-4">Download CV</a>
+      border-radius: 1rem; " >
+      <div
+        class="container py-5 card"
+        style="background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(8px); border: none"
+      >
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <div class="ms-4">
+              <h1 class="display-4 fw-bold mb-4 text-dark">Benjamin Otchere Boakye</h1>
+              <h2 class="h4 mb-4 text-dark">Full Stack Software Engineer</h2>
+              <p class="lead mb-4 text-dark">
+                5+ years of experience designing, developing, and scaling enterprise-level web
+                applications.
+              </p>
+              <div class="d-flex gap-3">
+                <a href="#contact" class="btn btn-light btn-md px-4">Contact Me</a>
+                <a href="#" class="btn btn-outline-secondary btn-md px-4">Download CV</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 mt-5 mt-lg-0">
+            <div class="d-flex justify-content-center align-items-center" style="height: 300px">
+              <img
+                src="/src/assets/img/avatar.png"
+                alt="Benjamin Otchere Boakye"
+                class="img-fluid rounded-circle"
+              />
             </div>
           </div>
         </div>
-        <div class="col-lg-6 mt-5 mt-lg-0">
-          <div class="d-flex justify-content-center align-items-center" style="height: 300px">
-            <img
-              src="/src/assets/img/avatar.png"
-              alt="Benjamin Otchere Boakye"
-              class="img-fluid rounded-circle"
-
-            />
-          </div>
-        </div>
       </div>
-    </div>
-  </header>
+    </header>
+  </nav>
 
   <!-- About Section -->
   <section id="about" class="py-5">
@@ -113,17 +114,32 @@ const resultMessage = ref('')
             <div class="col-md-6">
               <ul class="list-unstyled">
                 <li class="mb-2"><strong>Phone:</strong> +44 7796 005063</li>
-                <li class="mb-2"><strong>Freelance:</strong> Available </li>
+                <li class="mb-2"><strong>Freelance:</strong> Available</li>
                 <li class="mb-2">
                   <strong>Social:</strong>
                   <span class="ms-1">
-                    <a href="https://github.com/NABY-Inc" target="_blank" class="me-2 text-dark" title="GitHub">
+                    <a
+                      href="https://github.com/NABY-Inc"
+                      target="_blank"
+                      class="me-2 text-dark"
+                      title="GitHub"
+                    >
                       <i class="bi bi-github"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/benjamin-otchere-boakye-204b96160" target="_blank" class="me-2 text-primary" title="LinkedIn">
+                    <a
+                      href="https://www.linkedin.com/in/benjamin-otchere-boakye-204b96160"
+                      target="_blank"
+                      class="me-2 text-primary"
+                      title="LinkedIn"
+                    >
                       <i class="bi bi-linkedin"></i>
                     </a>
-                    <a href="https://wakatime.com/@naby" target="_blank" class="text-info" title="Wakatime">
+                    <a
+                      href="https://wakatime.com/@naby"
+                      target="_blank"
+                      class="text-info"
+                      title="Wakatime"
+                    >
                       <i class="bi bi-bar-chart"></i>
                     </a>
                   </span>
@@ -376,7 +392,10 @@ const resultMessage = ref('')
           <div class="timeline-date">May 2024 – Present</div>
           <div class="timeline-content card shadow-sm">
             <div class="card-body">
-              <h3 class="h5">Route to Transition, IT Systems Administrator <span class="text-muted">(Part-time)</span></h3>
+              <h3 class="h5">
+                Route to Transition, IT Systems Administrator
+                <span class="text-muted">(Part-time)</span>
+              </h3>
               <p class="text-muted">London</p>
               <ul>
                 <li>
@@ -489,7 +508,8 @@ const resultMessage = ref('')
               <p class="text-muted">All-in-one educational platform for schools in Ghana</p>
               <p>
                 Built with Laravel, Vue, GraphQL, and AWS. Provides comprehensive school management
-                solutions including student records management, academic performance tracking, financial tracking, attendance tracking, and communication tools.
+                solutions including student records management, academic performance tracking,
+                financial tracking, attendance tracking, and communication tools.
               </p>
               <div class="d-flex flex-wrap gap-2 mt-3">
                 <span class="badge bg-primary">Laravel</span>
@@ -558,7 +578,10 @@ const resultMessage = ref('')
               <p class="text-muted">BSc in Information Technology</p>
               <p>July 2021</p>
               <p>
-                Specialized in Information Technology with a strong focus on software engineering, database systems, networking, and IT project management. Developed practical skills in programming, systems analysis, and deploying technology solutions to solve real-world business challenges.
+                Specialized in Information Technology with a strong focus on software engineering,
+                database systems, networking, and IT project management. Developed practical skills
+                in programming, systems analysis, and deploying technology solutions to solve
+                real-world business challenges.
               </p>
             </div>
           </div>
