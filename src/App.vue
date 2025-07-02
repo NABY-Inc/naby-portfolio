@@ -54,7 +54,6 @@ import heroBg from '@/assets/img/img-bg-1.jpg'
         borderRadius: '1rem',
       }"
     >
-      border-radius: 1rem; " >
       <div
         class="container py-5 card"
         style="background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(8px); border: none"
